@@ -8,13 +8,17 @@ git clone https://github.com/nilsonsierota/nlw-return-server.git
 ```sh
 npm install 
 ```
-## Run the command to run the project on browser.
+## Run command to configure prisma
 ```sh
-npm run dev
+ npx prisma generate
 ```
 ## Run the command to test
 ```sh
 npm run test
+```
+## Run the command to run the project on browser.
+```sh
+npm run dev
 ```
 
 This project is the back-end to use in the NWL RETURN MISSION IMPULSE of the [Rockeseat](https://www.rocketseat.com.br).
