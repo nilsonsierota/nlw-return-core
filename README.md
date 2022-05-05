@@ -12,13 +12,13 @@ npm install
 ```sh
  npx prisma generate
 ```
-## Run the command to run the project on browser.
-```sh
-npm run dev
-```
 ## Run the command to test
 ```sh
 npm run test
+```
+## Run the command to run the project on browser.
+```sh
+npm run dev
 ```
 
 This project is the back-end to use in the NWL RETURN MISSION IMPULSE of the [Rockeseat](https://www.rocketseat.com.br).
