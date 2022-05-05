@@ -8,6 +8,10 @@ git clone https://github.com/nilsonsierota/nlw-return-server.git
 ```sh
 npm install 
 ```
+## Run command to configure prisma
+```sh
+ npx prisma generate
+```
 ## Run the command to run the project on browser.
 ```sh
 npm run dev
