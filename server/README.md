@@ -1,18 +1,25 @@
 To run this project do the steps:
 
 ## Clone the repository to use
+
 ```sh
 git clone https://github.com/nilsonsierota/nlw-return-server.git
 ```
+
 ## Run command to install the dependencys
+
 ```sh
-npm install 
+npm install
 ```
+
 ## Run the command to test
+
 ```sh
 npm run test
 ```
+
 ## Run the command to run the project on browser.
+
 ```sh
 npm run dev
 ```
