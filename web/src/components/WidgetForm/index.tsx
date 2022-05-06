@@ -63,12 +63,21 @@ export function WidgetForm() {
       )}
 
       <footer className="text-xs text-neutral-400">
-        Feito com ♥ pela
+        Feito por
         <a
           className="underline underline-offset-2"
-          href="https://rocketseat.com.br"
+          href="https://github.com/nilsonsierota"
+          style={{ marginLeft: 3, marginRight: 3 }}
         >
-          Rocketseat
+          Nilson Sierota
+        </a>
+        em parceia com
+        <a
+          className="underline underline-offset-2"
+          href="https://www.rocketseat.com.br"
+          style={{ marginLeft: 3 }}
+        >
+          RocketSeat
         </a>
       </footer>
     </div>
