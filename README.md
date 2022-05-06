@@ -8,10 +8,6 @@ git clone https://github.com/nilsonsierota/nlw-return-server.git
 ```sh
 npm install 
 ```
-## Run command to configure prisma
-```sh
- npx prisma generate
-```
 ## Run the command to test
 ```sh
 npm run test
