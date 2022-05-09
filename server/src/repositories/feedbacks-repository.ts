@@ -4,6 +4,14 @@ export interface FeedbackCreateData {
   screenshot?: string;
 }
 
+export interface FeedbackData {
+  id: string;
+  type: string;
+  comment: string;
+  screenshot?: string;
+}
+
 export interface FeedbackRepository {
   create: (data: FeedbackCreateData) => Promise<void>;
+  findAll: () => Promise<FeedbackData[] | null>;
 }

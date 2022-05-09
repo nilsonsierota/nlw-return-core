@@ -2,6 +2,7 @@ import { prisma } from "../../prisma";
 import {
   FeedbackCreateData,
   FeedbackRepository,
+  FeedbackData,
 } from "../feedbacks-repository";
 
 export class PrismaFeedbacksRepository implements FeedbackRepository {
@@ -13,5 +14,11 @@ export class PrismaFeedbacksRepository implements FeedbackRepository {
         screenshot,
       },
     });
+  }
+
+  async findAll() {
+    const feedbacks = await prisma.feedback.findMany();
+
+    return feedbacks as FeedbackData[] | null;
   }
 }
