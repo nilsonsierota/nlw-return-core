@@ -28,13 +28,18 @@ export function FeedbackContentStep({
 
     setIsSendingFeedback(true);
 
-    await api.post("/feedback", {
-      type: feedbackType,
-      comment,
-      screenshot,
-    });
+    try {
+      await api.post("/feedback", {
+        type: feedbackType,
+        comment,
+        screenshot,
+      });
+      onFeedbackSent();
+    } catch (error) {
+      setIsSendingFeedback(true);
 
-    onFeedbackSent();
+      console.log(error);
+    }
   }
 
   return (
