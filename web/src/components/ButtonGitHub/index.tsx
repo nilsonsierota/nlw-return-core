@@ -1,14 +1,18 @@
 import github from "../../assets/github.png";
 
 export function ButtonGitHub() {
-  function handleClickGitHub() {}
-
   return (
-    <img
-      className="w-8 h-8 rounded-md hover:bg-zinc-700"
-      src={github}
-      alt="imagem do GitHub"
-      onClick={handleClickGitHub}
-    />
+    <a
+      className="min-w-[32px] min-h-[32px] max-w-[32px] max-h-[32px] rounded-md hover:bg-zinc-700"
+      href="https://github.com/nilsonsierota"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img
+        className="rounded-md hover:bg-zinc-700"
+        src={github}
+        alt="imagem do GitHub"
+      />
+    </a>
   );
 }

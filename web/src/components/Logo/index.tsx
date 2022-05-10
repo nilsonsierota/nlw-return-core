@@ -1,9 +1,10 @@
-import imgLogo from "../../assets/logo.jpg";
+import imgLogo from "../../assets/logo.png";
 
 export function Logo() {
   return (
-    <button className="hover:bg-zinc-600">
-      <img className="h-10 w-40 shadow-lg rounded-md flex-none" src={imgLogo} />
-    </button>
+    <img
+      className="hover:bg-zinc-600 min-h[40px] min-w-[160px] shadow-lg rounded-md flex-none"
+      src={imgLogo}
+    />
   );
 }

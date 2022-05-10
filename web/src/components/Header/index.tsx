@@ -7,13 +7,13 @@ import { NavBar } from "../NavBar";
 export function Header() {
   return (
     <header
-      className="bg-zinc-800 h-18 w-full shadow-lg 
+      className="bg-zinc-800 h-[72px] w-full shadow-lg 
       flex flex-row items-center px-40 justify-center space-x-24"
     >
       <Logo />
       <NavBar />
       <ButtonGitHub />
-      <SignOut className="w-8 h-8 min-w-8 min-h-8 rounded-md hover:bg-zinc-700" />
+      <SignOut className="min-w-[32px] min-h-[32px] max-w-[32px] max-h-[32px] rounded-md hover:bg-zinc-700" />
       <Avatar src="http://github.com/nilsonsierota.png" />
     </header>
   );

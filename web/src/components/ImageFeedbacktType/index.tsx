@@ -15,8 +15,7 @@ export function ImageFeedbackTypes({ type }: ImageProps) {
         alt={feedbackTypeInfo.image.alt}
         className="w-6 h-6"
       />
-      {feedbackTypeInfo.title}
-
+      <span>{feedbackTypeInfo.title}</span>
       <button type="button" className="text-zinc-400 hover:text-zinc-100 ">
         <X weight="bold" className="w-4 h-4" />
       </button>

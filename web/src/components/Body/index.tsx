@@ -30,9 +30,8 @@ export function Body() {
         >
           {feedbacks?.map((value) => {
             return (
-              <button
+              <div
                 key={value.id}
-                type="button"
                 className="bg-zinc-700 rounded-lg w-88 h-80 flex-1 flex flex-col
                         items-center justify-around gap-2 border-2 border-transparent 
                         hover:border-brand-500 focus:border-brand-500 
@@ -43,21 +42,20 @@ export function Body() {
                 <textarea
                   disabled
                   readOnly
+                  defaultValue={value.comment}
                   className="w-full h-full p-2 text-sm placeholder-zinc-400 
                   text-zinc-100 border-zinc-600 bg-transparent rounded-md 
                   focus:border-brand-500 focus:ring-brand-500 focus:ring-1 
                   focus:outline-none resize-none scrollbar-thumb-zinc-700 
                   scrollbar-track-transparent scrollbar-thin"
-                >
-                  {value.comment}
-                </textarea>
+                ></textarea>
 
                 {value.screenshot ? (
                   <DialogScheenshoot screenshot={value.screenshot} />
                 ) : (
                   <span className="p-3.5">Nenhum Screenshot</span>
                 )}
-              </button>
+              </div>
             );
           })}
         </div>
