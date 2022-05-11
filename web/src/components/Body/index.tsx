@@ -13,20 +13,18 @@ export function Body() {
   const { data: feedbacks } = useApi<FeedbackTypesProps[]>("/feedbacks");
 
   return (
-    <div className="flex flex-col px-40 min-h-225 ">
+    <div className="flex flex-col px-40 min-h-225 sm:px-40 xs:px-6  ">
       <div
-        className="flex 
-      min-h-[124px] h-full w-280 px-14 
-      bg-zinc-700 my-12 text-zinc-400 
-      justify-start items-center "
+        className="flex min-h-[124px] h-full w-280 px-14 bg-zinc-700 
+        my-12 text-zinc-400 justify-start items-center"
       >
         Experimente enviar um feedback de um bug na aplicação 🐛
       </div>
 
       {feedbacks ? (
         <div
-          className="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 
-                  gap-6"
+          className="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 
+          xl:grid-cols-4 2xl:grid-cols-4 gap-6"
         >
           {feedbacks?.map((value) => {
             return (
@@ -62,7 +60,7 @@ export function Body() {
       ) : (
         <button type="button" className="bg-brand-500 ..." disabled>
           <svg
-            className="animate-spin h-5 w-5 mr-3 ..."
+            className="animate-spin h-5 w-5 max-w-5 mr-3 ..."
             viewBox="0 0 24 24"
           ></svg>
           Carregando Feedbacks...
