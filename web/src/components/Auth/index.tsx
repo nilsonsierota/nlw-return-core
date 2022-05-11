@@ -1,11 +1,63 @@
 import github from "../../assets/github.png";
 
+import {
+  getAuth,
+  GithubAuthProvider,
+  signInWithPopup,
+  signInWithRedirect,
+  User,
+} from "firebase/auth";
+import { useEffect, useState } from "react";
+import initializeAuthentication from "../../lib/Firebase/firebase";
+import Widget from "../Widget";
+
 export function Auth() {
+  const [user, setUser] = useState<User | null>(null);
+  const [error, setError] = useState({});
+
+  initializeAuthentication();
+  const githubProvider = new GithubAuthProvider();
+  const auth = getAuth();
+
+  function handleGithubSignIn() {
+    signInWithPopup(auth, githubProvider)
+      .then((result) => {
+        localStorage.setItem(`github-user`, JSON.stringify(result.user));
+      })
+      .catch((err) => {
+        const errorCollection = {
+          errCode: err.code,
+          errMessage: err.message,
+        };
+        console.log(errorCollection.errCode);
+        setError(errorCollection);
+      });
+  }
+
+  function handleGitHubRedirect() {
+    signInWithRedirect(auth, githubProvider);
+
+    return <Widget />;
+  }
+
+  useEffect(() => {
+    const getGithubUser = localStorage.getItem(`github-user`);
+
+    if (getGithubUser) {
+      const githubMember = JSON.parse(getGithubUser) as User;
+
+      if (githubMember) {
+        setUser(githubMember);
+      }
+    }
+  }, []);
+
   return (
     <>
       <button
         className="relative items-center justify-center hover:bg-zinc-600 
       rounded-md xs:max-h-[35px] xs:max-w-[30px] w-[calc(100vw-2rem)] md:w-auto "
+        onClick={handleGitHubRedirect}
       >
         <img
           className="rounded-md hover:bg-zinc-700"
