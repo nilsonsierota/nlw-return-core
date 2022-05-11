@@ -1,18 +1,10 @@
 import github from "../../assets/github.png";
 
-import {
-  getAuth,
-  GithubAuthProvider,
-  signInWithPopup,
-  signInWithRedirect,
-  User,
-} from "firebase/auth";
-import { useEffect, useState } from "react";
+import { getAuth, GithubAuthProvider, signInWithPopup } from "firebase/auth";
+import { useState } from "react";
 import initializeAuthentication from "../../lib/Firebase/firebase";
-import Widget from "../Widget";
 
 export function Auth() {
-  const [user, setUser] = useState<User | null>(null);
   const [error, setError] = useState({});
 
   initializeAuthentication();
@@ -23,7 +15,6 @@ export function Auth() {
     signInWithPopup(auth, githubProvider)
       .then((result) => {
         localStorage.setItem(`github-user`, JSON.stringify(result.user));
-        return <Widget />;
       })
       .catch((err) => {
         const errorCollection = {
@@ -35,28 +26,10 @@ export function Auth() {
       });
   }
 
-  function handleGitHubRedirect() {
-    signInWithRedirect(auth, githubProvider);
-
-    return <Widget />;
-  }
-
-  useEffect(() => {
-    const getGithubUser = localStorage.getItem(`github-user`);
-
-    if (getGithubUser) {
-      const githubMember = JSON.parse(getGithubUser) as User;
-
-      if (githubMember) {
-        setUser(githubMember);
-      }
-    }
-  }, []);
-
   return (
     <>
       <button
-        className="flex items-center justify-center hover:bg-zinc-600 
+        className="sticky bottom-20 items-center justify-center hover:bg-zinc-600 
       rounded-md xs:max-h-[35px] xs:max-w-[30px] w-[calc(100vw-2rem)] md:w-auto "
         onClick={handleGithubSignIn}
       >
