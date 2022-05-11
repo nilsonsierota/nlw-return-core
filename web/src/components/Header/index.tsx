@@ -9,7 +9,7 @@ export function Header() {
     <header
       className="bg-zinc-800 h-[72px] w-full shadow-lg 
       flex flex-row items-center px-40 justify-center space-x-24 
-      xs:space-x-4 xs:px-1"
+      xs:space-x-4 xs:px-1 sticky top-0"
     >
       <Logo />
       <NavBar />
