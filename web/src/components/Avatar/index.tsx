@@ -1,6 +1,8 @@
-import { auth } from "../../lib/firebase";
+import { getAuth } from "firebase/auth";
 
 export function Avatar() {
+  const auth = getAuth();
+
   return (
     <a
       className="w-[48px] h-[48x] min-w-[48x] min-h-[48x] 
