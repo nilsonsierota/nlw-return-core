@@ -75,7 +75,7 @@ export function Body() {
                   w-280 px-14"
           ></textarea>
 
-          <span className="p-6"></span>
+          <span className="p-7"></span>
         </div>
       )}
     </div>
