@@ -48,7 +48,7 @@ export function App() {
 
   return (
     <>
-      {user ? (
+      {user != {} ? (
         <Widget />
       ) : (
         <button
