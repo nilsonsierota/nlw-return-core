@@ -3,8 +3,15 @@ import { useEffect, useState } from "react";
 import Widget from "./components/Widget";
 import initializeAuthentication from "./lib/Firebase/firebase";
 
-export function App() {
-  const [user, setUser] = useState({});
+interface UserProps {
+  name: string;
+  email: string;
+  image: string;
+  lastSignInTime: string;
+}
+
+export function App({ name, email, image, lastSignInTime }: UserProps) {
+  const [user, setUser] = useState<UserProps | undefined>(undefined);
   const [error, setError] = useState({});
 
   initializeAuthentication();
@@ -38,7 +45,7 @@ export function App() {
     const getGithubUser = localStorage.getItem(`github-user`);
 
     if (getGithubUser) {
-      const githubMember = JSON.parse(getGithubUser);
+      const githubMember = JSON.parse(getGithubUser) as UserProps;
 
       if (githubMember) {
         setUser(githubMember);
@@ -48,7 +55,7 @@ export function App() {
 
   return (
     <>
-      {user != {} ? (
+      {user?.name ? (
         <Widget />
       ) : (
         <button
