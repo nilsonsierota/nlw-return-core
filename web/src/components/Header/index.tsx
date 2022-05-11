@@ -14,12 +14,12 @@ export function Header() {
       <Logo />
       <NavBar />
       <ButtonGitHub />
-      <SignOut
+      {/* <SignOut
         className="min-w-[32px] min-h-[32px] 
       max-w-[32px] max-h-[32px] rounded-md hover:bg-zinc-700
       xs:max-h-[10px] xs:max-w-[10px]"
-      />
-      <Avatar />
+      /> */}
+      {/* <Avatar /> */}
     </header>
   );
 }
