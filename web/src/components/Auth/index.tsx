@@ -2,12 +2,10 @@ import github from "../../assets/github.png";
 
 import { getAuth, GithubAuthProvider, signInWithPopup } from "firebase/auth";
 import { useState } from "react";
-import initializeAuthentication from "../../lib/Firebase/firebase";
 
 export function Auth() {
   const [error, setError] = useState({});
 
-  initializeAuthentication();
   const githubProvider = new GithubAuthProvider();
   const auth = getAuth();
 
@@ -23,7 +21,8 @@ export function Auth() {
         };
         console.log(errorCollection.errCode);
         setError(errorCollection);
-      });
+      })
+      .finally(() => window.location.reload());
   }
 
   return (
