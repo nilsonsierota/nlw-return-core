@@ -2,6 +2,7 @@ import {
   getAuth,
   GithubAuthProvider,
   signInWithPopup,
+  signInWithRedirect,
   User,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
@@ -14,13 +15,12 @@ export function App() {
 
   initializeAuthentication();
   const githubProvider = new GithubAuthProvider();
+  const auth = getAuth();
 
-  const handleGithubSignIn = () => {
-    const auth = getAuth();
+  function handleGithubSignIn() {
     signInWithPopup(auth, githubProvider)
       .then((result) => {
         localStorage.setItem(`github-user`, JSON.stringify(result.user));
-        window.location.reload();
       })
       .catch((err) => {
         const errorCollection = {
@@ -30,7 +30,11 @@ export function App() {
         console.log(errorCollection.errCode);
         setError(errorCollection);
       });
-  };
+  }
+
+  function handleGitHubRedirect() {
+    signInWithRedirect(auth, githubProvider);
+  }
 
   useEffect(() => {
     const getGithubUser = localStorage.getItem(`github-user`);
