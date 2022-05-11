@@ -1,17 +1,15 @@
-import { getAuth, GithubAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  getAuth,
+  GithubAuthProvider,
+  signInWithPopup,
+  User,
+} from "firebase/auth";
 import { useEffect, useState } from "react";
 import Widget from "./components/Widget";
 import initializeAuthentication from "./lib/Firebase/firebase";
 
-interface UserProps {
-  name: string;
-  email: string;
-  image: string;
-  lastSignInTime: string;
-}
-
-export function App({ name, email, image, lastSignInTime }: UserProps) {
-  const [user, setUser] = useState<UserProps | undefined>(undefined);
+export function App() {
+  const [user, setUser] = useState<User | null>(null);
   const [error, setError] = useState({});
 
   initializeAuthentication();
@@ -21,14 +19,7 @@ export function App({ name, email, image, lastSignInTime }: UserProps) {
     const auth = getAuth();
     signInWithPopup(auth, githubProvider)
       .then((result) => {
-        const { displayName, email, photoURL, metadata } = result.user;
-        const loggedInUser = {
-          name: displayName,
-          email: email,
-          image: photoURL,
-          lastSignInTime: metadata?.lastSignInTime,
-        };
-        localStorage.setItem(`github-user`, JSON.stringify(loggedInUser));
+        localStorage.setItem(`github-user`, JSON.stringify(result.user));
         window.location.reload();
       })
       .catch((err) => {
@@ -45,7 +36,7 @@ export function App({ name, email, image, lastSignInTime }: UserProps) {
     const getGithubUser = localStorage.getItem(`github-user`);
 
     if (getGithubUser) {
-      const githubMember = JSON.parse(getGithubUser) as UserProps;
+      const githubMember = JSON.parse(getGithubUser) as User;
 
       if (githubMember) {
         setUser(githubMember);
@@ -55,7 +46,7 @@ export function App({ name, email, image, lastSignInTime }: UserProps) {
 
   return (
     <>
-      {user?.name ? (
+      {user?.displayName ? (
         <Widget />
       ) : (
         <button
