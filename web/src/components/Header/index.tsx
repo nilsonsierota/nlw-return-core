@@ -1,25 +1,30 @@
+import { getAuth, signOut } from "firebase/auth";
 import { SignOut } from "phosphor-react";
+import { useState } from "react";
 import { Avatar } from "../Avatar";
 import { ButtonGitHub } from "../ButtonGitHub";
 import { Logo } from "../Logo";
 import { NavBar } from "../NavBar";
 
-import { getAuth, signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-
 export function Header() {
-  const navigate = useNavigate();
-  const auth = getAuth();
+  const [user, setUser] = useState({});
 
-  function handleSignOut() {
+  const handleLogout = () => {
+    const auth = getAuth();
     signOut(auth)
       .then(() => {
-        navigate(-1);
+        setUser({});
       })
-      .catch((error) => {
-        // An error happened.
-      });
-  }
+      .catch((error) => console.log(error));
+
+    const getGithubUser = localStorage.getItem(`github-user`);
+
+    if (getGithubUser) {
+      localStorage.removeItem(`github-user`);
+    }
+
+    window.location.reload();
+  };
 
   return (
     <header
@@ -34,7 +39,7 @@ export function Header() {
         className="min-w-[32px] min-h-[32px] 
       max-w-[32px] max-h-[32px] rounded-md hover:bg-zinc-700
       xs:max-h-[10px] xs:max-w-[10px]"
-        onClick={handleSignOut}
+        onClick={handleLogout}
       />
       <Avatar />
     </header>
