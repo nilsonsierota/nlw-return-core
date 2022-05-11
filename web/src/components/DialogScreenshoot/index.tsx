@@ -71,7 +71,7 @@ export default function DialogScheenshoot({
                     Screenshot
                   </Dialog.Title>
                   <div className="mt-4">
-                    <img className="max-w-280 max-h-[700px]" src={screenshot} />
+                    <img className="max-w-280 max-h-[650px]" src={screenshot} />
 
                     <button
                       type="button"
