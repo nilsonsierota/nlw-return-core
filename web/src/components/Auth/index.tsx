@@ -23,6 +23,7 @@ export function Auth() {
     signInWithPopup(auth, githubProvider)
       .then((result) => {
         localStorage.setItem(`github-user`, JSON.stringify(result.user));
+        return <Widget />;
       })
       .catch((err) => {
         const errorCollection = {
@@ -55,9 +56,9 @@ export function Auth() {
   return (
     <>
       <button
-        className="relative items-center justify-center hover:bg-zinc-600 
+        className="flex items-center justify-center hover:bg-zinc-600 
       rounded-md xs:max-h-[35px] xs:max-w-[30px] w-[calc(100vw-2rem)] md:w-auto "
-        onClick={handleGitHubRedirect}
+        onClick={handleGithubSignIn}
       >
         <img
           className="rounded-md hover:bg-zinc-700"
